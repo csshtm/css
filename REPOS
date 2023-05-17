@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Navbar Example</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Add custom CSS -->
+  <style>
+    .navbar-scroll-away {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    .navbar-scroll-away.navbar-hidden {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-default navbar-scroll-away">
+    <div class="container">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Food, LLC</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Add your content below -->
+
+  <!-- Add Bootstrap JS (jQuery is required) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  
+  <!-- Add custom script for navbar scroll-away behavior -->
+  <script>
+    $(function() {
+      var prevScrollPos = $(window).scrollTop();
+
+      $(window).scroll(function() {
+        var currentScrollPos = $(window).scrollTop();
+
+        if (currentScrollPos > prevScrollPos) {
+          $('.navbar-scroll-away').addClass('navbar-hidden');
+        } else {
+          $('.navbar-scroll-away').removeClass('navbar-hidden');
+        }
+
+        prevScrollPos = currentScrollPos;
+      });
+    });
+  </script>
+</body>
+</html>
